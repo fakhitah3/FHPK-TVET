@@ -39,7 +39,8 @@ ax.set_ylabel("Nilai")
 ax.set_title("PLO Performance for Subjects in 2023")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
-ax.legend()
+# Legend placed outside the chart (top right)
+ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1), borderaxespad=0)
 
 # Use Streamlit's st.pyplot to display the plot
 st.pyplot(fig)
