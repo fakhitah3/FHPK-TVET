@@ -77,15 +77,11 @@ dx_filtered = dx[dx['Tahun'] == int(year_selectionSAH)]
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
 subjects = dx_filtered['Subjek'].unique()
 
-# Grouped bar chart
-plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
-subjects = df_filtered['Subjek'].unique()
-
 width = 0.15
 x = range(len(subjects))
 
 # Now, calculate the total sum for each PLO and display them as metrics
-plo_sums = df_filtered[plo_columns].sum()/4
+plo_sums = dx_filtered[plo_columns].sum()/4
 
 # Use Streamlit's columns to display metrics in one line
 col1, col2, col3, col4 = st.columns(4)
@@ -138,15 +134,12 @@ dy_filtered = dy[dy['Tahun'] == int(year_selectionSAS)]
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
 subjects = dy_filtered['Subjek'].unique()
 
-# Grouped bar chart
-plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
-subjects = df_filtered['Subjek'].unique()
 
 width = 0.15
 x = range(len(subjects))
 
 # Now, calculate the total sum for each PLO and display them as metrics
-plo_sums = df_filtered[plo_columns].sum()/4
+plo_sums = dy_filtered[plo_columns].sum()/4
 
 # Use Streamlit's columns to display metrics in one line
 col1, col2, col3, col4 = st.columns(4)
