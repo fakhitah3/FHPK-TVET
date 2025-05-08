@@ -38,7 +38,7 @@ for i, plo in enumerate(plo_columns):
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects {year_selectionSAP}")
+ax.set_title(f"PLO Performance for Subjects {year_selectionSAP}")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
@@ -80,7 +80,7 @@ for i, plo in enumerate(plo_columns):
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects {year_selectionSAH}")
+ax.set_title(f"PLO Performance for Subjects {year_selectionSAH}")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
@@ -122,7 +122,7 @@ for i, plo in enumerate(plo_columns):
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects {year_selectionSAS}")
+ax.set_title(f"PLO Performance for Subjects {year_selectionSAS}")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
