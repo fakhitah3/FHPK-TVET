@@ -18,7 +18,7 @@ except Exception as e:
   print(f"An error occurred: {e}")
 
 # Create a dropdown menu for year selection
-year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"])
+year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"],key="yearSAP_dropdown")
 
 # Filter data based on the selected year
 df_filtered = df[df['Tahun'] == int(year_selectionSAP)]
@@ -38,7 +38,7 @@ for i, plo in enumerate(plo_columns):
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects")
+ax.set_title("PLO Performance for Subjects {year_selectionSAP}")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
@@ -60,7 +60,7 @@ except Exception as e:
 
 
 # Create a dropdown menu for year selection
-year_selectionSAH = st.selectbox("Select Year", ["2022", "2023", "2024"])
+year_selectionSAH = st.selectbox("Select Year", ["2022", "2023", "2024"], key="yearSAH_dropdown")
 
 # Filter data based on the selected year
 dx_filtered = dx[dx['Tahun'] == int(year_selectionSAH)]
@@ -80,7 +80,7 @@ for i, plo in enumerate(plo_columns):
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects")
+ax.set_title("PLO Performance for Subjects {year_selectionSAH}")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
@@ -102,7 +102,7 @@ except Exception as e:
 
 
 # Create a dropdown menu for year selection
-year_selectionSAS = st.selectbox("Select Year", ["2023", "2024"])
+year_selectionSAS = st.selectbox("Select Year", ["2023", "2024"], key="yearSAH_dropdown")
 
 # Filter data based on the selected year
 dy_filtered = dy[dy['Tahun'] == int(year_selectionSAS)]
@@ -122,7 +122,7 @@ for i, plo in enumerate(plo_columns):
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects")
+ax.set_title("PLO Performance for Subjects {year_selectionSAS}")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
