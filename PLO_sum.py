@@ -28,7 +28,7 @@ width = 0.15
 x = range(len(subjects))
 
 # Now, calculate the total sum for each PLO and display them as metrics
-plo_sums = df_filtered[plo_columns].sum()
+plo_sums = df_filtered[plo_columns].sum()/4
 
 # Use Streamlit's columns to display metrics in one line
 col1, col2, col3, col4 = st.columns(4)
