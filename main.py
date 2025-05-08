@@ -4,7 +4,7 @@ import streamlit as st
 st.title("Streamlit Multi-Page App")
 
 # Create a sidebar with navigation options
-page = st.sidebar.selectbox("Select Page", ["PLO Sum Visualization", "Data Table"])
+page = st.sidebar.radio("Select Page", ["PLO Sum Visualization", "Data Table"])
 
 # Based on the selection, navigate to the corresponding page
 if page == "PLO Sum Visualization":
