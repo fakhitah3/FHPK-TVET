@@ -10,6 +10,14 @@ except FileNotFoundError:
 except Exception as e:
   print(f"An error occurred: {e}")
 
+st.header("_Streamlit_ is :blue[cool] :sunglasses:")
+st.header("This is a header with a divider", divider="gray")
+st.header("These headers have rotating dividers", divider=True)
+st.header("One", divider=True)
+st.header("Two", divider=True)
+st.header("Three", divider=True)
+
+st.header("Pencapaian PLO untuk 3 kohort di Industri", divider=True)
 
 # Filter data for 2023
 df_2023 = df[df['Tahun'] == 2023]
