@@ -9,38 +9,43 @@ import streamlit as st
 # Add a header to the Streamlit app
 st.title("Pelancongan")  # This creates a title at the top of the page
 
-# Read data from the given URL
 try:
-    df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAP.csv')
-
-    # Filter data for 2023
-    df_2023 = df[df['Tahun'] == 2023]
-
-    # Grouped bar chart
-    plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
-    subjek_values = df_2023['Subjek'].unique()
-
-    plt.figure(figsize=(12, 6))  # Adjust figure size as needed
-
-    x = range(len(subjek_values))
-    width = 0.15
-
-    for i, plo in enumerate(plo_columns):
-        plt.bar([val + i * width for val in x], df_2023.groupby('Subjek')[plo].sum(), width, label=plo)
-
-    plt.xlabel("Subjek")
-    plt.ylabel("Value")
-    plt.title("PLO Analysis for 2023")
-    plt.xticks([val + width for val in x], subjek_values, rotation=45, ha='right')  # Rotates labels for better visibility
-    plt.legend(loc="upper right", bbox_to_anchor=(1.1, 1))  # Moves legend outside the chart
-
-    # Display the plot using Streamlit
-    st.pyplot(plt)
-
+  df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAP.csv')
+  print(df.head()) # Print the first few rows to verify
 except FileNotFoundError:
-    st.error("Error: 'PLO Analysis' not found. Please upload the file to your current working directory or provide the correct path.")
+  print("Error: File not found. Please upload the file to your current working directory or provide the correct path.")
 except Exception as e:
-    st.error(f"An error occurred: {e}")
+  print(f"An error occurred: {e}")
+
+
+# Filter data for 2023
+df_2023 = df[df['Tahun'] == 2023]
+
+# Grouped bar chart
+plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
+subjects = df_2023['Subjek'].unique()
+
+width = 0.15
+x = range(len(subjects))
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(12, 6))
+
+for i, plo in enumerate(plo_columns):
+    ax.bar([val + i * width for val in x], df_2023.groupby('Subjek')[plo].sum(), width, label=plo)
+
+ax.set_xlabel("Subjek")
+ax.set_ylabel("Nilai")
+ax.set_title("PLO Performance for Subjects in 2023")
+ax.set_xticks([val + width for val in x])
+ax.set_xticklabels(subjects, rotation=45, ha='right')
+ax.legend()
+
+# Use Streamlit's st.pyplot to display the plot
+st.pyplot(fig)
+
+
+
 
 
 
