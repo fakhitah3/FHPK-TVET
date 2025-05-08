@@ -11,37 +11,50 @@ try:
     
     # Group by 'TAHUN' and count the number of 'INDUSTRI'
     industri_counts = df_industri.groupby('TAHUN')['INDUSTRI'].count()
-    # Create the bar chart
-    plt.figure(figsize=(8, 6))
-    plt.bar(industri_counts.index, industri_counts.values)
-
-    # Set labels and title
-    plt.xlabel("Tahun")
-    plt.ylabel("Bilangan Industri")
-    plt.title("Bilangan Industri yang Terlibat")
-
-    # Customize x-axis ticks to show only 2022, 2023, 2024
-    plt.xticks([2022, 2023, 2024])
     
-    # Display the plot using Streamlit
-    st.pyplot(plt)
+    # Create an interactive bar chart using Plotly
+    fig = go.Figure(data=[go.Bar(
+        x=industri_counts.index,
+        y=industri_counts.values,
+        text=industri_counts.values,  # Hover text
+        textposition='outside',  # Position the text outside the bar
+        hoverinfo='text',  # Show text on hover
+    )])
+
+    # Set the chart title and axis labels
+    fig.update_layout(
+        title="Bilangan Industri yang Terlibat",
+        xaxis_title="Tahun",
+        yaxis_title="Bilangan Industri",
+        xaxis=dict(tickmode='array', tickvals=[2022, 2023, 2024], ticktext=['2022', '2023', '2024']),
+    )
+
+    # Display the Plotly figure in Streamlit
+    st.plotly_chart(fig)
+
     
     pelajar_counts = df_industri.groupby('TAHUN')['JUMLAH PELAJAR'].count()
 
-    # Create the bar chart
-    plt.figure(figsize=(8, 6))
-    plt.bar(industri_counts.index, industri_counts.values)
+    # Create an interactive bar chart using Plotly
+    fig = go.Figure(data=[go.Bar(
+        x=pelajar_counts.index,
+        y=pelajar_counts.values,
+        text=pelajar_counts.values,  # Hover text
+        textposition='outside',  # Position the text outside the bar
+        hoverinfo='text',  # Show text on hover
+    )])
 
-    # Set labels and title
-    plt.xlabel("Tahun")
-    plt.ylabel("Bilangan Pelajar")
-    plt.title("Bilangan Pelajar yang Terlibat")
+    # Set the chart title and axis labels
+    fig.update_layout(
+        title="Bilangan Pelajar yang Terlibat",
+        xaxis_title="Tahun",
+        yaxis_title="Bilangan Pelajar",
+        xaxis=dict(tickmode='array', tickvals=[2022, 2023, 2024], ticktext=['2022', '2023', '2024']),
+    )
 
-    # Customize x-axis ticks to show only 2022, 2023, 2024
-    plt.xticks([2022, 2023, 2024])
-    
-    # Display the plot using Streamlit
-    st.pyplot(plt)
+    # Display the Plotly figure in Streamlit
+    st.plotly_chart(fig)
+
 
 except FileNotFoundError:
     st.error("Error: 'Industri.csv' file not found.")
