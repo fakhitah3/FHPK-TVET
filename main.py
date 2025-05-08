@@ -17,9 +17,11 @@ except FileNotFoundError:
 except Exception as e:
   print(f"An error occurred: {e}")
 
+# Create a dropdown menu for year selection
+year_selection = st.selectbox("Select Year", ["2023", "2024"])
 
-# Filter data for 2023
-df_2023 = df[df['Tahun'] == 2023]
+# Filter data based on the selected year
+df_filtered = df[df['Tahun'] == int(year_selection)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
@@ -57,8 +59,11 @@ except Exception as e:
   print(f"An error occurred: {e}")
 
 
-# Filter data for 2023
-df_2023 = df[df['Tahun'] == 2023]
+# Create a dropdown menu for year selection
+year_selection = st.selectbox("Select Year", ["2022", "2023", "2024"])
+
+# Filter data based on the selected year
+df_filtered = df[df['Tahun'] == int(year_selection)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
@@ -96,8 +101,11 @@ except Exception as e:
   print(f"An error occurred: {e}")
 
 
-# Filter data for 2023
-df_2023 = df[df['Tahun'] == 2023]
+# Create a dropdown menu for year selection
+year_selection = st.selectbox("Select Year", ["2023", "2024"])
+
+# Filter data based on the selected year
+df_filtered = df[df['Tahun'] == int(year_selection)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
