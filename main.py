@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 PLO = st.Page('PLO_sum.py', title='PLO by Course')
-overall = st.Page('Overall_PLO.py', title="DOverall PLO")
+overall = st.Page('Overall_PLO.py', title="Overall PLO")
 home = st.Page('home.py', title='Homepage', default=True, icon=":material/home:")
 
 pg = st.navigation(
