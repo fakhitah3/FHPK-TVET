@@ -33,15 +33,10 @@ plo_sums = df_filtered[plo_columns].sum()
 # Use Streamlit's columns to display metrics in one line
 col1, col2, col3, col4 = st.columns(4)
 
-# Display each metric in its respective column
-with col1:
-    st.metric(label="PLO 2", value=f"{plo_sums['PLO 2']}", delta="0", help="Total value for PLO 2")
-with col2:
-    st.metric(label="PLO 3", value=f"{plo_sums['PLO 3']}", delta="0", help="Total value for PLO 3")
-with col3:
-    st.metric(label="PLO 4", value=f"{plo_sums['PLO 4']}", delta="0", help="Total value for PLO 4")
-with col4:
-    st.metric(label="PLO 5", value=f"{plo_sums['PLO 5']}", delta="0", help="Total value for PLO 5")
+col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']}", delta="0", help="Total value for PLO 2", border=True)
+col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']}", delta="0", help="Total value for PLO 3", border=True)
+col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']}", delta="0", help="Total value for PLO 4", border=True)
+col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']}", delta="0", help="Total value for PLO 5", border=True)
   
 # Create the plot
 fig, ax = plt.subplots(figsize=(12, 6))
