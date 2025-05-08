@@ -25,7 +25,7 @@ df_filtered = df[df['Tahun'] == int(year_selection)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
-subjects = df_2023['Subjek'].unique()
+subjects = df_filtered['Subjek'].unique()
 
 width = 0.15
 x = range(len(subjects))
@@ -34,11 +34,11 @@ x = range(len(subjects))
 fig, ax = plt.subplots(figsize=(12, 6))
 
 for i, plo in enumerate(plo_columns):
-    ax.bar([val + i * width for val in x], df_2023.groupby('Subjek')[plo].sum(), width, label=plo)
+    ax.bar([val + i * width for val in x], df_filtered.groupby('Subjek')[plo].sum(), width, label=plo)
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects in 2023")
+ax.set_title("PLO Performance for Subjects")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
@@ -51,7 +51,7 @@ st.pyplot(fig)
 st.title("Hospitaliti")  # This creates a title at the top of the page
 
 try:
-  df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAH.csv')
+  dx = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAH.csv')
   print(df.head()) # Print the first few rows to verify
 except FileNotFoundError:
   print("Error: File not found. Please upload the file to your current working directory or provide the correct path.")
@@ -63,11 +63,11 @@ except Exception as e:
 year_selection = st.selectbox("Select Year", ["2022", "2023", "2024"])
 
 # Filter data based on the selected year
-df_filtered = df[df['Tahun'] == int(year_selection)]
+dx_filtered = dx[dx['Tahun'] == int(year_selection)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
-subjects = df_2023['Subjek'].unique()
+subjects = dx_filtered['Subjek'].unique()
 
 width = 0.15
 x = range(len(subjects))
@@ -76,11 +76,11 @@ x = range(len(subjects))
 fig, ax = plt.subplots(figsize=(12, 6))
 
 for i, plo in enumerate(plo_columns):
-    ax.bar([val + i * width for val in x], df_2023.groupby('Subjek')[plo].sum(), width, label=plo)
+    ax.bar([val + i * width for val in x], dx_filtered.groupby('Subjek')[plo].sum(), width, label=plo)
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects in 2023")
+ax.set_title("PLO Performance for Subjects")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
@@ -105,11 +105,11 @@ except Exception as e:
 year_selection = st.selectbox("Select Year", ["2023", "2024"])
 
 # Filter data based on the selected year
-df_filtered = df[df['Tahun'] == int(year_selection)]
+dy_filtered = df[df['Tahun'] == int(year_selection)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
-subjects = df_2023['Subjek'].unique()
+subjects = dy_filtered['Subjek'].unique()
 
 width = 0.15
 x = range(len(subjects))
@@ -118,11 +118,11 @@ x = range(len(subjects))
 fig, ax = plt.subplots(figsize=(12, 6))
 
 for i, plo in enumerate(plo_columns):
-    ax.bar([val + i * width for val in x], df_2023.groupby('Subjek')[plo].sum(), width, label=plo)
+    ax.bar([val + i * width for val in x], dy_filtered.groupby('Subjek')[plo].sum(), width, label=plo)
 
 ax.set_xlabel("Subjek")
 ax.set_ylabel("Nilai")
-ax.set_title("PLO Performance for Subjects in 2023")
+ax.set_title("PLO Performance for Subjects")
 ax.set_xticks([val + width for val in x])
 ax.set_xticklabels(subjects, rotation=45, ha='right')
 # Legend placed outside the chart (top right)
