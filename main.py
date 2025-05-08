@@ -52,7 +52,7 @@ st.title("Hospitaliti")  # This creates a title at the top of the page
 
 try:
   dx = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAH.csv')
-  print(df.head()) # Print the first few rows to verify
+  print(dx.head()) # Print the first few rows to verify
 except FileNotFoundError:
   print("Error: File not found. Please upload the file to your current working directory or provide the correct path.")
 except Exception as e:
@@ -93,8 +93,8 @@ st.pyplot(fig)
 st.title("Kesejahteraan")  # This creates a title at the top of the page
 
 try:
-  df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAS.csv')
-  print(df.head()) # Print the first few rows to verify
+  dy = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAS.csv')
+  print(dy.head()) # Print the first few rows to verify
 except FileNotFoundError:
   print("Error: File not found. Please upload the file to your current working directory or provide the correct path.")
 except Exception as e:
@@ -105,7 +105,7 @@ except Exception as e:
 year_selection = st.selectbox("Select Year", ["2023", "2024"])
 
 # Filter data based on the selected year
-dy_filtered = df[df['Tahun'] == int(year_selection)]
+dy_filtered = dy[dy['Tahun'] == int(year_selection)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
