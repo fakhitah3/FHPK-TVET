@@ -18,7 +18,7 @@ except Exception as e:
   print(f"An error occurred: {e}")
 
 # Create a dropdown menu for year selection
-year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"],key="yearSAP_dropdown")
+year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"])
 
 # Filter data based on the selected year
 df_filtered = df[df['Tahun'] == int(year_selectionSAP)]
@@ -60,7 +60,7 @@ except Exception as e:
 
 
 # Create a dropdown menu for year selection
-year_selectionSAH = st.selectbox("Select Year", ["2022", "2023", "2024"], key="yearSAH_dropdown")
+year_selectionSAH = st.selectbox("Select Year", ["2022", "2023", "2024"])
 
 # Filter data based on the selected year
 dx_filtered = dx[dx['Tahun'] == int(year_selectionSAH)]
@@ -102,7 +102,7 @@ except Exception as e:
 
 
 # Create a dropdown menu for year selection
-year_selectionSAS = st.selectbox("Select Year", ["2023", "2024"], key="yearSAH_dropdown")
+year_selectionSAS = st.selectbox("Select Year", ["2023", "2024"], key="year_dropdown")
 
 # Filter data based on the selected year
 dy_filtered = dy[dy['Tahun'] == int(year_selectionSAS)]
