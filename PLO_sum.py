@@ -77,6 +77,25 @@ dx_filtered = dx[dx['Tahun'] == int(year_selectionSAH)]
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
 subjects = dx_filtered['Subjek'].unique()
 
+# Grouped bar chart
+plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
+subjects = df_filtered['Subjek'].unique()
+
+width = 0.15
+x = range(len(subjects))
+
+# Now, calculate the total sum for each PLO and display them as metrics
+plo_sums = df_filtered[plo_columns].sum()/4
+
+# Use Streamlit's columns to display metrics in one line
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="Total value for PLO 2", border=True)
+col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="Total value for PLO 3", border=True)
+col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="Total value for PLO 4", border=True)
+col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="Total value for PLO 5", border=True)
+
+
 width = 0.15
 x = range(len(subjects))
 
@@ -118,6 +137,25 @@ dy_filtered = dy[dy['Tahun'] == int(year_selectionSAS)]
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
 subjects = dy_filtered['Subjek'].unique()
+
+# Grouped bar chart
+plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
+subjects = df_filtered['Subjek'].unique()
+
+width = 0.15
+x = range(len(subjects))
+
+# Now, calculate the total sum for each PLO and display them as metrics
+plo_sums = df_filtered[plo_columns].sum()/4
+
+# Use Streamlit's columns to display metrics in one line
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="Total value for PLO 2", border=True)
+col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="Total value for PLO 3", border=True)
+col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="Total value for PLO 4", border=True)
+col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="Total value for PLO 5", border=True)
+  
 
 width = 0.15
 x = range(len(subjects))
