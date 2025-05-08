@@ -18,10 +18,10 @@ except Exception as e:
   print(f"An error occurred: {e}")
 
 # Create a dropdown menu for year selection
-year_selection = st.selectbox("Select Year", ["2023", "2024"])
+year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"])
 
 # Filter data based on the selected year
-df_filtered = df[df['Tahun'] == int(year_selection)]
+df_filtered = df[df['Tahun'] == int(year_selectionSAP)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
@@ -60,10 +60,10 @@ except Exception as e:
 
 
 # Create a dropdown menu for year selection
-year_selection = st.selectbox("Select Year", ["2022", "2023", "2024"])
+year_selectionSAH = st.selectbox("Select Year", ["2022", "2023", "2024"])
 
 # Filter data based on the selected year
-dx_filtered = dx[dx['Tahun'] == int(year_selection)]
+dx_filtered = dx[dx['Tahun'] == int(year_selectionSAH)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
@@ -102,10 +102,10 @@ except Exception as e:
 
 
 # Create a dropdown menu for year selection
-year_selection = st.selectbox("Select Year", ["2023", "2024"])
+year_selectionSAS = st.selectbox("Select Year", ["2023", "2024"])
 
 # Filter data based on the selected year
-dy_filtered = dy[dy['Tahun'] == int(year_selection)]
+dy_filtered = dy[dy['Tahun'] == int(year_selectionSAS)]
 
 # Grouped bar chart
 plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
