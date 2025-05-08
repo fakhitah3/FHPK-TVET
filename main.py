@@ -11,15 +11,14 @@ st.set_page_config(
     }
 )
 
-# Create a sidebar with navigation options
-page = st.sidebar.radio("Select Page", ["PLO Sum Visualization", "Overall PLO"])
+PLO = st.Page('PLO_sum.py', title='PLO by Course')
+overall = st.Page('Overall_PLO.py', title="DOverall PLO")
+home = st.Page('home.py', title='Homepage', default=True, icon=":material/home:")
 
-# Based on the selection, navigate to the corresponding page
-if page == "PLO Sum Visualization":
-    st.write("### PLO Sum Visualization")
-    # Run the code for the first page (PLO Sum Visualization)
-    import PLO_sum  # This is the file containing the logic for PLO Sum Visualization
-elif page == "Data Table":
-    st.write("### Overall PLO")
-    # Run the code for the second page (Data Table)
-    import Overall_PLO  # This is the file containing the logic for the second page
+pg = st.navigation(
+        {
+            "Menu": [home,PLO,overall]
+        }
+    )
+
+pg.run()
