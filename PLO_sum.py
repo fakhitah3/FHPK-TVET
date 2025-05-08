@@ -27,6 +27,14 @@ subjects = df_filtered['Subjek'].unique()
 width = 0.15
 x = range(len(subjects))
 
+plo_sums = df_filtered[plo_columns].sum()
+
+# Display metrics for each PLO
+st.metric(label="PLO 2", value=f"{plo_sums['PLO 2']}", delta="0", help="Total value for PLO 2")
+st.metric(label="PLO 3", value=f"{plo_sums['PLO 3']}", delta="0", help="Total value for PLO 3")
+st.metric(label="PLO 4", value=f"{plo_sums['PLO 4']}", delta="0", help="Total value for PLO 4")
+st.metric(label="PLO 5", value=f"{plo_sums['PLO 5']}", delta="0", help="Total value for PLO 5")
+
 # Create the plot
 fig, ax = plt.subplots(figsize=(12, 6))
 
