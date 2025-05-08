@@ -18,7 +18,7 @@ try:
     # Set labels and title
     plt.xlabel("Tahun")
     plt.ylabel("Bilangan Industri")
-    plt.title("Bilangan Industri Tahunan")
+    plt.title("Bilangan Industri yang Terlibat")
 
     # Customize x-axis ticks to show only 2022, 2023, 2024
     plt.xticks([2022, 2023, 2024])
@@ -34,8 +34,8 @@ try:
 
     # Set labels and title
     plt.xlabel("Tahun")
-    plt.ylabel("Bilangan Industri")
-    plt.title("Bilangan Industri Tahunan")
+    plt.ylabel("Bilangan Pelajar")
+    plt.title("Bilangan Pelajar yang Terlibat")
 
     # Customize x-axis ticks to show only 2022, 2023, 2024
     plt.xticks([2022, 2023, 2024])
