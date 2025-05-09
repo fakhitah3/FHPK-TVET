@@ -111,12 +111,12 @@ with st.expander("Pelancongan"):
     col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="PLO 5: Communication Skill", border=True)
       
     # Create the plot
-    fig = go.Figure()
+    fig_SAP = go.Figure()
     
     # Add each PLO as a separate trace (bar group)
     for i, plo in enumerate(plo_columns):
         values = df_filtered.groupby('Subjek')[plo].sum()
-        fig.add_trace(go.Bar(
+        fig_SAP.add_trace(go.Bar(
             x=[val + i * width for val in x],
             y=values,
             name=plo,
@@ -126,7 +126,7 @@ with st.expander("Pelancongan"):
         ))
     
     # Update layout to set axis labels and chart title
-    fig.update_layout(
+    fig_SAP.update_layout(
         title=f"Prestasi PLO bagi Tahun {year_selectionSAP}",
         xaxis_title="Subjek",
         yaxis_title="Nilai",
@@ -141,7 +141,8 @@ with st.expander("Pelancongan"):
     )
     
     # Display the Plotly chart using Streamlit
-    st.plotly_chart(fig)
+    st.plotly_chart(fig_SAP, use_container_width=True, key="SAP_plot")
+
 
 with st.expander("Hospitality"):   
     try:
@@ -182,12 +183,12 @@ with st.expander("Hospitality"):
     x = range(len(subjects))
     
     # Create the plot
-    fig = go.Figure()
+    fig_SAH = go.Figure()
     
     # Add each PLO as a separate trace (bar group)
     for i, plo in enumerate(plo_columns):
         values = df_filtered.groupby('Subjek')[plo].sum()
-        fig.add_trace(go.Bar(
+        fig_SAH.add_trace(go.Bar(
             x=[val + i * width for val in x],
             y=values,
             name=plo,
@@ -197,7 +198,7 @@ with st.expander("Hospitality"):
         ))
     
     # Update layout to set axis labels and chart title
-    fig.update_layout(
+    fig_SAH.update_layout(
         title=f"Prestasi PLO bagi Tahun {year_selectionSAH}",
         xaxis_title="Subjek",
         yaxis_title="Nilai",
@@ -212,7 +213,7 @@ with st.expander("Hospitality"):
     )
     
     # Display the Plotly chart using Streamlit
-    st.plotly_chart(fig)
+    st.plotly_chart(fig_SAH, use_container_width=True, key="SAH_plot")
 
 with st.expander("Kesejahteraan"):   
     try:
@@ -254,12 +255,12 @@ with st.expander("Kesejahteraan"):
     x = range(len(subjects))
     
     # Create the plot
-    fig = go.Figure()
+    fig_SAS = go.Figure()
     
     # Add each PLO as a separate trace (bar group)
     for i, plo in enumerate(plo_columns):
         values = df_filtered.groupby('Subjek')[plo].sum()
-        fig.add_trace(go.Bar(
+        fig_SAS.add_trace(go.Bar(
             x=[val + i * width for val in x],
             y=values,
             name=plo,
@@ -269,7 +270,7 @@ with st.expander("Kesejahteraan"):
         ))
     
     # Update layout to set axis labels and chart title
-    fig.update_layout(
+    fig_SAS.update_layout(
         title=f"Prestasi PLO bagi Tahun {year_selectionSAS}",
         xaxis_title="Subjek",
         yaxis_title="Nilai",
@@ -284,4 +285,4 @@ with st.expander("Kesejahteraan"):
     )
     
     # Display the Plotly chart using Streamlit
-    st.plotly_chart(fig)
+     st.plotly_chart(fig_SAS, use_container_width=True, key="SAS_plot")
