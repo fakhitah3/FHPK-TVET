@@ -95,7 +95,7 @@ with tab1:
       print(f"An error occurred: {e}")
     
     # Create a dropdown menu for year selection
-    year_selectionSAH = st.selectbox("Select Year", ["2022", "2023", "2024"])
+    year_selectionSAH = st.selectbox("Pilih Tahun", ["2022", "2023", "2024"])
     
     # Filter data based on the selected year
     dx_filtered = dx[dx['Tahun'] == int(year_selectionSAH)]
@@ -165,7 +165,7 @@ with tab2:
       print(f"An error occurred: {e}")
     
     # Create a dropdown menu for year selection
-    year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"])
+    year_selectionSAP = st.selectbox("Pilih Tahun", ["2023", "2024"])
     
     # Filter data based on the selected year
     df_filtered = df[df['Tahun'] == int(year_selectionSAP)]
@@ -232,7 +232,7 @@ with tab3:
     
     
     # Create a dropdown menu for year selection
-    year_selectionSAS = st.selectbox("Select Year", ["2023", "2024"], key="year_dropdown")
+    year_selectionSAS = st.selectbox("Pilih Tahun", ["2023", "2024"], key="year_dropdown")
     
     # Filter data based on the selected year
     dy_filtered = dy[dy['Tahun'] == int(year_selectionSAS)]
