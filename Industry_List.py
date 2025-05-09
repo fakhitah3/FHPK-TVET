@@ -37,6 +37,9 @@ try:
     st.plotly_chart(fig_Ind)
 
     
+    # Set the title of the Streamlit app
+    st.title("Jumlah Pelajar Terlibat")
+    
     # Calculate the overall number of students per year
     total_students_by_year = df_industri.groupby('TAHUN')['JUMLAH PELAJAR'].sum()
 
@@ -55,7 +58,7 @@ try:
 
     # Set the chart title and axis labels
     fig_Std.update_layout(
-        title="Total Number of Students Involved by Year",
+        #title="Jumlah Pelajar Terlibat",
         xaxis_title="Year",
         yaxis_title="Number of Students",
         xaxis=dict(tickmode='array', tickvals=[2022, 2023, 2024], ticktext=['2022', '2023', '2024']),
@@ -64,6 +67,40 @@ try:
 
     # Display the Plotly chart in Streamlit
     st.plotly_chart(fig_Std)
+
+    # Set the title of the Streamlit app
+    st.title("Jumlah Pelajar Terlibat per Tahun (SAS, SAH, SAP)")
+    
+    # Load the data
+    df_industri = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/Industri.csv', on_bad_lines='skip')
+    
+    # Group by 'TAHUN' and 'KURSUS' and calculate the sum of 'JUMLAH PELAJAR'
+    student_counts = df_industri.groupby(['TAHUN', 'KURSUS'])['JUMLAH PELAJAR'].sum().unstack()
+    
+    # Create an interactive grouped bar chart for the number of students per year and course
+    fig_Course = go.Figure()
+    
+    # Add a trace for each KURSUS (SAS, SAH, SAP)
+    for kursus in student_counts.columns:
+        fig_Course.add_trace(go.Bar(
+            x=student_counts.index,
+            y=student_counts[kursus],
+            name=kursus,
+            hoverinfo='y',  # Show the number of students on hover
+        ))
+    
+    # Set the chart title and axis labels
+    fig_Course.update_layout(
+        title="Jumlah Pelajar Terlibat per Tahun dan Kursus (SAS, SAH, SAP)",
+        xaxis_title="Tahun",
+        yaxis_title="Number of Students",
+        barmode='group',  # Group the bars for each year
+        xaxis=dict(tickmode='array', tickvals=student_counts.index, ticktext=student_counts.index),
+        legend_title="Kursus"
+    )
+    
+    # Display the Plotly chart in Streamlit
+    st.plotly_chart(fig_Course)
 
     # Interactive click event handling for viewing distribution by SAH, SAP, SAS
     # Adding a callback for showing distribution when clicking on a bar
