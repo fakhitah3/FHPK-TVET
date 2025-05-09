@@ -79,7 +79,17 @@ try:
     
     # Create an interactive grouped bar chart for the number of students per year and course
     fig_Course = go.Figure()
-    
+
+    # Map the KURSUS to their respective names
+    kursus_mapping = {
+        'SAP': 'Pelancongan',
+        'SAH': 'Hospitaliti',
+        'SAS': 'Kesejahteraan'
+    }
+
+    # Rename columns using the mapping
+    student_counts = student_counts.rename(columns=kursus_mapping)
+
     # Add a trace for each KURSUS (SAS, SAH, SAP)
     for kursus in student_counts.columns:
         fig_Course.add_trace(go.Bar(
@@ -91,7 +101,7 @@ try:
     
     # Set the chart title and axis labels
     fig_Course.update_layout(
-        title="Jumlah Pelajar Terlibat per Tahun dan Kursus (SAS, SAH, SAP)",
+        #title="Jumlah Pelajar Terlibat per Tahun dan Kursus",
         xaxis_title="Tahun",
         yaxis_title="Number of Students",
         barmode='group',  # Group the bars for each year
