@@ -10,16 +10,19 @@ st.title("Industri Count by Year")
 try:
     df_industri = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/Industri.csv', on_bad_lines='skip')
     
-    # Group by 'TAHUN' and count the number of 'INDUSTRI'
-    industri_counts = df_industri.groupby('TAHUN')['INDUSTRI'].count()
+    # Remove duplicates based on 'INDUSTRI' column and group by 'TAHUN' to count unique 'INDUSTRI'
+    unique_industri = df_industri.drop_duplicates(subset=['INDUSTRI'])
+
+    # Group by 'TAHUN' and count the number of unique 'INDUSTRI'
+    industri_counts = unique_industri.groupby('TAHUN')['INDUSTRI'].count()
     
     # Create an interactive bar chart using Plotly
     fig = go.Figure(data=[go.Bar(
         x=industri_counts.index,
         y=industri_counts.values,
-        text=industri_counts.values,  # Hover text
-        textposition='outside',  # Position the text outside the bar
-        hoverinfo='text',  # Show text on hover
+        #text=industri_counts.values,  # Hover text
+        #textposition='outside',  # Position the text outside the bar
+        hoverinfo='y',  # Show text on hover
     )])
 
     # Set the chart title and axis labels
