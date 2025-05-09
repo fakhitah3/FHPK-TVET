@@ -66,8 +66,8 @@ try:
     # Set the chart title and axis labels
     fig_Std.update_layout(
         #title="Jumlah Pelajar Terlibat",
-        xaxis_title="Year",
-        yaxis_title="Number of Students",
+        xaxis_title="Tahun",
+        yaxis_title="Bilangan Pelajar",
         xaxis=dict(tickmode='array', tickvals=[2022, 2023, 2024], ticktext=['2022', '2023', '2024']),
         barmode='group'
     )
@@ -110,7 +110,7 @@ try:
     fig_Course.update_layout(
         #title="Jumlah Pelajar Terlibat per Tahun dan Kursus",
         xaxis_title="Tahun",
-        yaxis_title="Number of Students",
+        yaxis_title="Bilangan Pelajar",
         barmode='group',  # Group the bars for each year
         xaxis=dict(tickmode='array', tickvals=student_counts.index, ticktext=student_counts.index),
         legend_title="Kursus"
