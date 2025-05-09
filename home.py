@@ -15,6 +15,9 @@ st.write(
     """
 )
 
+banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i.jpeg' 
+st.image(banner_image, use_container_width =True)
+
 st.markdown(
     "[Untuk maklumat lanjut, sila layari Laman Sesawang Fakulti Hospitaliti, Pelancongan dan Kesejahteraan UMK.](https://fhpk.umk.edu.my/program-details.cfm?ref=801&name=---)"
 )
