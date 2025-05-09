@@ -1,8 +1,0 @@
-# .streamlit/config.toml
-
-[theme]
-primaryColor = "#4CAF50"  # Example: Change the primary color (green in this case)
-backgroundColor = "#FFFFFF"  # Background color (white)
-secondaryBackgroundColor = "#F0F0F0"  # Secondary background (light grey)
-textColor = "#000000"  # Text color (black)
-font = "sans serif"  # Font (can also use "serif" or "monospace")
