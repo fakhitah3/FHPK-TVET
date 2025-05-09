@@ -98,7 +98,6 @@ with tab1:
     except Exception as e:
       print(f"An error occurred: {e}")
     
-    
     # Create a dropdown menu for year selection
     year_selectionSAH = st.selectbox("Select Year", ["2022", "2023", "2024"])
     
@@ -132,7 +131,7 @@ with tab1:
     
     # Add each PLO as a separate trace (bar group)
     for i, plo in enumerate(plo_columns):
-        values = df_filtered.groupby('Subjek')[plo].sum()
+        values = dx_filtered.groupby('Subjek')[plo].sum()
         fig_SAH.add_trace(go.Bar(
             x=[val + i * width for val in x],
             y=values,
@@ -270,7 +269,7 @@ with tab3:
     
     # Add each PLO as a separate trace (bar group)
     for i, plo in enumerate(plo_columns):
-        values = df_filtered.groupby('Subjek')[plo].sum()
+        values = dy_filtered.groupby('Subjek')[plo].sum()
         fig_SAS.add_trace(go.Bar(
             x=[val + i * width for val in x],
             y=values,
