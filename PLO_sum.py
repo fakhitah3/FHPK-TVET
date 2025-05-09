@@ -24,7 +24,7 @@ def plot_plo_sums(df):
     """Plots the sum of values for each PLO across subjects using Plotly."""
 
     plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']  # Define PLO columns
-    plo_sums = df.groupby('Subjek')[plo_columns].sum().sum()  # Sum for all subjects
+    plo_sums = df.groupby[plo_columns].mean()
 
     # Create an interactive bar chart using Plotly
     fig = go.Figure(data=[go.Bar(
@@ -46,9 +46,6 @@ def plot_plo_sums(df):
 
     # Display the Plotly chart using Streamlit
     st.plotly_chart(fig)
-
-# Add a header to the Streamlit app
-st.title("PLO Keseluruhan")
 
 
 # URLs of your CSV files
