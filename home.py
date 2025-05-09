@@ -2,7 +2,7 @@ import streamlit as st
 
 # Add a banner image at the top
 banner_image = 'https://github.com/fakhitah3/FHPK-TVET/blob/main/3u1i.jpeg'  
-st.image(banner_image, use_column_width=True)
+st.image(banner_image, use_container_width =True)
 
 # Add the main paragraph and explanation
 st.write(
