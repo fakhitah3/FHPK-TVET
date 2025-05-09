@@ -1,12 +1,12 @@
 import streamlit as st
 
 # Add a banner image at the top
-#banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i.jpeg' 
-#st.image(banner_image, use_container_width =True)
+banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i.jpeg' 
+st.image(banner_image, use_container_width =True)
 
-video_url = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/Video.mp4' 
+#video_url = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/Video.mp4' 
 # Embed the video as an iframe with autoplay and loop
-st.markdown(f'<iframe width="100%" height="400" src="{video_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', unsafe_allow_html=True)
+#st.markdown(f'<iframe width="100%" height="400" src="{video_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', unsafe_allow_html=True)
 
 
 # Add the main paragraph and explanation
