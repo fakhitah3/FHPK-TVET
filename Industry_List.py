@@ -35,7 +35,14 @@ try:
 
     # Display the Plotly figure in Streamlit
     st.plotly_chart(fig_Ind)
-
+    # Display the data in a table format
+    st.write("### Senarai Industri")
+    st.dataframe(unique_industri)  # This displays the dataframe in a table format
+    
+    # Optional: Provide some explanation for the table
+    st.write("""
+    You can click on the column headers to sort the data.
+    """)
     
     # Set the title of the Streamlit app
     st.title("Jumlah Pelajar Terlibat")
