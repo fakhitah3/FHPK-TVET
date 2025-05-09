@@ -69,7 +69,7 @@ try:
     st.plotly_chart(fig_Std)
 
     # Set the title of the Streamlit app
-    st.title("Jumlah Pelajar Terlibat per Tahun (SAS, SAH, SAP)")
+    st.title("Jumlah Pelajar Terlibat per Tahun")
     
     # Load the data
     df_industri = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/Industri.csv', on_bad_lines='skip')
@@ -112,19 +112,6 @@ try:
     # Display the Plotly chart in Streamlit
     st.plotly_chart(fig_Course)
 
-    # Interactive click event handling for viewing distribution by SAH, SAP, SAS
-    # Adding a callback for showing distribution when clicking on a bar
-    selected_year = st.selectbox("Select a Year to View Distribution", [2022, 2023, 2024])
-
-    # Filter the data based on the selected year
-    df_filtered = df_industri[df_industri['TAHUN'] == selected_year]
-
-    # Group by KURSUS (SAH, SAP, SAS) and get the sum of students
-    kursus_distribution = df_filtered.groupby('KURSUS')['JUMLAH PELAJAR'].sum()
-
-    # Display the distribution for the selected year
-    st.write(f"### Taburan Pelajar pada Tahun {selected_year}")
-    st.bar_chart(kursus_distribution)  # Bar chart for SAH, SAP, SAS distribution
 
 except FileNotFoundError:
     st.error("Error: 'Industri.csv' file not found.")
