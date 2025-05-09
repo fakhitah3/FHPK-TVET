@@ -17,9 +17,9 @@ st.write(
     - **Kesejahteraan**
     """
 )
-with st.expander("Click to expand and view the performance data"):
-  # Add a header to the Streamlit app
-  st.title("Pelancongan")  # This creates a title at the top of the page
+
+# Add a header to the Streamlit app
+st.title("Pelancongan")  # This creates a title at the top of the page
 
 try:
   df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAP.csv')
