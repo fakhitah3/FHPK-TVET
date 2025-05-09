@@ -49,11 +49,19 @@ if all_data:
     # Calculate the average value of each PLO across all subjects
     plo_averages = combined_df[plo_columns].mean()  # This calculates the mean of each PLO across all subjects
 
+    col1, col2, col3, col4 = st.columns(4)
+    
+    col1.metric(label="PLO 2", value=f"{plo_averages ['PLO 2']:.2f}", help="PLO 2: Cognitive Skill", border=True)
+    col2.metric(label="PLO 3", value=f"{plo_averages ['PLO 3']:.2f}", help="PLO 3: Digital Skill", border=True)
+    col3.metric(label="PLO 4", value=f"{plo_averages ['PLO 4']:.2f}", help="PLO 4: Interpersonal Skill", border=True)
+    col4.metric(label="PLO 5", value=f"{plo_averages ['PLO 5']:.2f}", help="PLO 5: Communication Skill", border=True)
+      
+
     # Create an interactive bar chart using Plotly
     fig = go.Figure(data=[go.Bar(
         x=plo_averages.index, 
         y=plo_averages.values, 
-        hoverinfo='y',  # Show text on hover
+        hoverinfo='%{y:.2f}',  # Show text on hover
     )])
 
     # Set labels and title for the chart
