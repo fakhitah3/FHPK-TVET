@@ -1,11 +1,5 @@
 import streamlit as st
 
-# Set the title and icon for the page
-st.set_page_config(
-    page_title="Program Apprentice 3u1i@FHPK",
-    page_icon="🎓", 
-)
-
 # Add a banner image at the top
 banner_image = 'your_banner_image_path.jpg'  # Replace with your banner image path
 st.image(banner_image, use_column_width=True)
