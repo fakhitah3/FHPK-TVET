@@ -1,11 +1,9 @@
 import streamlit as st
 
+# Set the title and icon for the page
 st.set_page_config(
-    page_title="Faculty of Hospitality, Tourism and Wellness UMK",
-    page_icon="🏨",  # You can choose an appropriate emoji for the icon, like a hotel emoji.
-    menu_items={
-        'About': "# Made By Faculty of Hospitality, Tourism and Wellness UMK"
-    }
+    page_title="Program Apprentice 3u1i@FHPK",
+    page_icon="🎓", 
 )
 
 analysis = st.Page('PLO_sum.py', title='PLO by Course', icon=":material/school:")
