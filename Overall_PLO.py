@@ -1,41 +1,40 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import streamlit as st
-
-import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-def plot_plo_sums(df):
-    """Plots the sum of values for each PLO across subjects using Plotly."""
+# Set the title of the Streamlit app
+st.title("PLO Average Performance for Subjects")
 
-    plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']  # Define PLO columns
-    plo_sums = df.groupby('Subjek')[plo_columns].sum().sum()  # Sum for all subjects
+# Example: Assuming you have your dataframe `df` already loaded
+# Replace this with actual data loading code if necessary, e.g., from a CSV or database
+# df = pd.read_csv('your_data.csv') 
 
-    # Create an interactive bar chart using Plotly
-    fig = go.Figure(data=[go.Bar(
-        x=plo_sums.index, 
-        y=plo_sums.values, 
-        #text=plo_sums.values,  # Display the value on hover
-        #textposition='outside',  # Position the text outside the bar
-        hoverinfo='y',  # Show text on hover
-    )])
+# Define PLO columns
+plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
 
-    # Set labels and title for the chart
-    fig.update_layout(
-        title="Total Value for Each PLO across all subjects",
-        xaxis_title="PLO",
-        yaxis_title="Nilai",
-        xaxis=dict(tickmode='array', tickvals=plo_sums.index),
-        margin=dict(r=100),  # Add space for the legend
-    )
+# Calculate the average value of each PLO across all subjects
+plo_averages = df[plo_columns].mean()  # This calculates the mean of each PLO across all subjects
 
-    # Display the Plotly chart using Streamlit
-    st.plotly_chart(fig)
+# Create an interactive bar chart using Plotly
+fig = go.Figure(data=[go.Bar(
+    x=plo_averages.index, 
+    y=plo_averages.values, 
+    text=plo_averages.values,  # Display the value on hover
+    textposition='outside',  # Position the text outside the bar
+    hoverinfo='text',  # Show text on hover
+)])
 
-# Add a header to the Streamlit app
-st.title("PLO Keseluruhan")
+# Set labels and title for the chart
+fig.update_layout(
+    title="Average Value for Each PLO across all subjects",
+    xaxis_title="PLO",
+    yaxis_title="Average Value",
+    xaxis=dict(tickmode='array', tickvals=plo_averages.index),
+    margin=dict(r=100),  # Add space for the legend
+)
 
+# Display the Plotly chart using Streamlit
+st.plotly_chart(fig)
 
 # URLs of your CSV files
 file_urls = [
