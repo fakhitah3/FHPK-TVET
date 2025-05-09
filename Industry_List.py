@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 # Set the title of the Streamlit app
-st.title("Industri Count by Year")
+st.title("Bilangan Industri Terlibat")
 
 # Load the CSV file from the provided URL
 try:
@@ -17,7 +17,7 @@ try:
     industri_counts = unique_industri.groupby('TAHUN')['INDUSTRI'].count()
     
     # Create an interactive bar chart using Plotly
-    fig = go.Figure(data=[go.Bar(
+    fig_Ind = go.Figure(data=[go.Bar(
         x=industri_counts.index,
         y=industri_counts.values,
         #text=industri_counts.values,  # Hover text
@@ -26,25 +26,25 @@ try:
     )])
 
     # Set the chart title and axis labels
-    fig.update_layout(
-        title="Bilangan Industri yang Terlibat",
+    fig_Ind.update_layout(
+        #title="Bilangan Industri yang Terlibat",
         xaxis_title="Tahun",
         yaxis_title="Bilangan Industri",
         xaxis=dict(tickmode='array', tickvals=[2022, 2023, 2024], ticktext=['2022', '2023', '2024']),
     )
 
     # Display the Plotly figure in Streamlit
-    st.plotly_chart(fig)
+    st.plotly_chart(fig_Ind)
 
     
     # Calculate the overall number of students per year
     total_students_by_year = df_industri.groupby('TAHUN')['JUMLAH PELAJAR'].sum()
 
     # Create an interactive bar chart for the overall number of students per year
-    fig = go.Figure()
+    fig_Std = go.Figure()
 
     # Add bar for total students per year
-    fig.add_trace(go.Bar(
+    fig_Std.add_trace(go.Bar(
         x=total_students_by_year.index,
         y=total_students_by_year.values,
         name='Total Students',
@@ -54,7 +54,7 @@ try:
     ))
 
     # Set the chart title and axis labels
-    fig.update_layout(
+    fig_Std.update_layout(
         title="Total Number of Students Involved by Year",
         xaxis_title="Year",
         yaxis_title="Number of Students",
@@ -63,7 +63,7 @@ try:
     )
 
     # Display the Plotly chart in Streamlit
-    st.plotly_chart(fig)
+    st.plotly_chart(fig_Std)
 
     # Interactive click event handling for viewing distribution by SAH, SAP, SAS
     # Adding a callback for showing distribution when clicking on a bar
@@ -76,7 +76,7 @@ try:
     kursus_distribution = df_filtered.groupby('KURSUS')['JUMLAH PELAJAR'].sum()
 
     # Display the distribution for the selected year
-    st.write(f"### Distribution of Students in {selected_year}")
+    st.write(f"### Taburan Pelajar pada Tahun {selected_year}")
     st.bar_chart(kursus_distribution)  # Bar chart for SAH, SAP, SAS distribution
 
 except FileNotFoundError:
