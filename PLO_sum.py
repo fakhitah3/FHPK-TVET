@@ -17,9 +17,9 @@ st.write(
     - **Kesejahteraan**
     """
 )
-with st.expander("Jumlah PLO"):
-    
-    def plot_plo_sums(df):
+
+st.title("Jumlah PLO Keseluruhan")
+def plot_plo_sums(df):
         """Plots the sum of values for each PLO across subjects using Plotly."""
     
         plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']  # Define PLO columns
@@ -75,9 +75,11 @@ with st.expander("Jumlah PLO"):
         combined_df = pd.concat(all_data, ignore_index=True)
         plot_plo_sums(combined_df)  # Call the function to create the visualization
     else:
-        st.error("No valid dataframes to process.")
-    
-with st.expander("Pelancongan"):   
+        st.error("No valid dataframes to process.")        
+
+tab1, tab2, tab3 = st.tabs(["Pelancongan", "Hospitaliti", "Kesejahteraan"])
+
+with tab1:
     try:
       df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAP.csv')
       print(df.head()) # Print the first few rows to verify
@@ -143,8 +145,7 @@ with st.expander("Pelancongan"):
     # Display the Plotly chart using Streamlit
     st.plotly_chart(fig_SAP, use_container_width=True, key="SAP_plot")
 
-
-with st.expander("Hospitality"):   
+with tab2:
     try:
       dx = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAH.csv')
       print(dx.head()) # Print the first few rows to verify
@@ -215,7 +216,7 @@ with st.expander("Hospitality"):
     # Display the Plotly chart using Streamlit
     st.plotly_chart(fig_SAH, use_container_width=True, key="SAH_plot")
 
-with st.expander("Kesejahteraan"):   
+with tab3:
     try:
       dy = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAS.csv')
       print(dy.head()) # Print the first few rows to verify
