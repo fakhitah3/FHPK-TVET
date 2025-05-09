@@ -2,23 +2,40 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
+import pandas as pd
+import plotly.graph_objects as go
+import streamlit as st
+
 def plot_plo_sums(df):
-    """Plots the sum of values for each PLO across subjects."""
+    """Plots the sum of values for each PLO across subjects using Plotly."""
 
     plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']  # Define PLO columns
-    plo_sums = df.groupby('Subjek')[plo_columns].sum().sum()  # Sum for all subjek
+    plo_sums = df.groupby('Subjek')[plo_columns].sum().sum()  # Sum for all subjects
 
-    plt.figure(figsize=(10, 6))
-    plt.bar(plo_sums.index, plo_sums.values)
-    plt.xlabel("PLO")
-    plt.ylabel("Total Value")
-    plt.title("Total Value for Each PLO across all subjects")
-    plt.xticks(rotation=45, ha="right")
-    plt.tight_layout()
-    st.pyplot(plt)  # Display the plot using Streamlit
+    # Create an interactive bar chart using Plotly
+    fig = go.Figure(data=[go.Bar(
+        x=plo_sums.index, 
+        y=plo_sums.values, 
+        #text=plo_sums.values,  # Display the value on hover
+        #textposition='outside',  # Position the text outside the bar
+        hoverinfo='y',  # Show text on hover
+    )])
+
+    # Set labels and title for the chart
+    fig.update_layout(
+        title="Total Value for Each PLO across all subjects",
+        xaxis_title="PLO",
+        yaxis_title="Nilai",
+        xaxis=dict(tickmode='array', tickvals=plo_sums.index),
+        margin=dict(r=100),  # Add space for the legend
+    )
+
+    # Display the Plotly chart using Streamlit
+    st.plotly_chart(fig)
 
 # Add a header to the Streamlit app
-st.title("PLO Sum Visualization")
+st.title("PLO Keseluruhan")
+
 
 # URLs of your CSV files
 file_urls = [
