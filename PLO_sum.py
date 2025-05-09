@@ -28,22 +28,22 @@ def plot_plo_sums(df):
 
     # Create an interactive bar chart using Plotly
     fig = go.Figure(data=[go.Bar(
-        x=plo_sums.index, 
-        y=plo_sums.values, 
-        #text=plo_sums.values,  # Display the value on hover
-        #textposition='outside',  # Position the text outside the bar
-        hoverinfo='y',  # Show text on hover
+        x=plo_averages.index, 
+        y=plo_averages.values, 
+        text=plo_averages.values,  # Display the value on hover
+        textposition='outside',  # Position the text outside the bar
+        hoverinfo='text',  # Show text on hover
     )])
-
+    
     # Set labels and title for the chart
     fig.update_layout(
-        title="Total Value for Each PLO across all subjects",
+        title="Average Value for Each PLO across all subjects",
         xaxis_title="PLO",
-        yaxis_title="Nilai",
-        xaxis=dict(tickmode='array', tickvals=plo_sums.index),
+        yaxis_title="Average Value",
+        xaxis=dict(tickmode='array', tickvals=plo_averages.index),
         margin=dict(r=100),  # Add space for the legend
     )
-
+    
     # Display the Plotly chart using Streamlit
     st.plotly_chart(fig)
 
