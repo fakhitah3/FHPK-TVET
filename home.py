@@ -16,5 +16,5 @@ st.write(
 )
 
 st.markdown(
-    "[For more details, click here to visit the program page](https://fhpk.umk.edu.my/program-details.cfm?ref=801&name=---)"
+    "[Untuk maklumat lanjut, sila layari Laman Sesawang Fakulti Hospitaliti, Pelancongan dan Kesejahteraan UMK.](https://fhpk.umk.edu.my/program-details.cfm?ref=801&name=---)"
 )
