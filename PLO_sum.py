@@ -70,85 +70,26 @@ else:
     st.error("No valid dataframes to process.")
     
 
-# Display the information about the 3 courses
-st.write(
-    """
-    Terdapat **3 kursus** utama yang terlibat dalam program ini, iaitu:
-    - **Pelancongan**
-    - **Hospitaliti**
-    - **Kesejahteraan**
-    """
-)
+st.subheader("Nama Program:")
+st.markdown("""
+**PROGRAM PENGAJIAN MOD INDUSTRI**
+- Ijazah Sarjana Muda Keusahawanan (Hospitaliti) dengan kepujian (Mod Industri) / MQA/FA4821
+- Ijazah Sarjana Muda Keusahawanan (Pelancongan) dengan kepujian (Mod Industri) / MQA/FA4832
+- Ijazah Sarjana Muda Keusahawanan (Kesejahteraan) dengan kepujian (Mod Industri) / MQA/FA4822
+""")
 
-tab1, tab2, tab3 = st.tabs(["Pelancongan", "Hospitaliti", "Kesejahteraan"])
+# Display academic program details
+st.subheader("Tahun Pengajian:")
+st.write("3 tahun di universiti, 1 tahun di industri (3u1i)")
+
+st.subheader("Tahun Pertama Penawaran Program:")
+st.write("2021")
+
+
+tab1, tab2, tab3 = st.tabs(["Hospitaliti", "Pelancongan", "Kesejahteraan"])
+
 
 with tab1:
-    try:
-      df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAP.csv')
-      print(df.head()) # Print the first few rows to verify
-    except FileNotFoundError:
-      print("Error: File not found. Please upload the file to your current working directory or provide the correct path.")
-    except Exception as e:
-      print(f"An error occurred: {e}")
-    
-    # Create a dropdown menu for year selection
-    year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"])
-    
-    # Filter data based on the selected year
-    df_filtered = df[df['Tahun'] == int(year_selectionSAP)]
-    
-    # Grouped bar chart
-    plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
-    subjects = df_filtered['Subjek'].unique()
-    
-    width = 0.15
-    x = range(len(subjects))
-    
-    # Now, calculate the total sum for each PLO and display them as metrics
-    plo_sums = df_filtered[plo_columns].sum()/4
-    
-    # Use Streamlit's columns to display metrics in one line
-    col1, col2, col3, col4 = st.columns(4)
-    
-    col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="PLO 2: Cognitive Skill", border=True)
-    col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="PLO 3: Digital Skill", border=True)
-    col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="PLO 4: Interpersonal Skill", border=True)
-    col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="PLO 5: Communication Skill", border=True)
-      
-    # Create the plot
-    fig_SAP = go.Figure()
-    
-    # Add each PLO as a separate trace (bar group)
-    for i, plo in enumerate(plo_columns):
-        values = df_filtered.groupby('Subjek')[plo].sum()
-        fig_SAP.add_trace(go.Bar(
-            x=[val + i * width for val in x],
-            y=values,
-            name=plo,
-            # text=values,  # Display the value on hover
-            # textposition='outside',  # Position the text outside the bar
-            hoverinfo='y',  # Show text on hover
-        ))
-    
-    # Update layout to set axis labels and chart title
-    fig_SAP.update_layout(
-        title=f"Prestasi PLO bagi Tahun {year_selectionSAP}",
-        xaxis_title="Subjek",
-        yaxis_title="Nilai",
-        xaxis=dict(
-            tickmode='array',
-            tickvals=[val + width for val in x],
-            ticktext=subjects,
-        ),
-        barmode='group',  # Display the bars in a grouped manner
-        legend=dict(x=1.05, y=1),  # Move legend outside the chart
-        margin=dict(r=100),  # Add margin for the legend
-    )
-    
-    # Display the Plotly chart using Streamlit
-    st.plotly_chart(fig_SAP, use_container_width=True, key="SAP_plot")
-
-with tab2:
     try:
       dx = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAH.csv')
       print(dx.head()) # Print the first few rows to verify
@@ -218,6 +159,72 @@ with tab2:
     
     # Display the Plotly chart using Streamlit
     st.plotly_chart(fig_SAH, use_container_width=True, key="SAH_plot")
+
+with tab2:
+    try:
+      df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAP.csv')
+      print(df.head()) # Print the first few rows to verify
+    except FileNotFoundError:
+      print("Error: File not found. Please upload the file to your current working directory or provide the correct path.")
+    except Exception as e:
+      print(f"An error occurred: {e}")
+    
+    # Create a dropdown menu for year selection
+    year_selectionSAP = st.selectbox("Select Year", ["2023", "2024"])
+    
+    # Filter data based on the selected year
+    df_filtered = df[df['Tahun'] == int(year_selectionSAP)]
+    
+    # Grouped bar chart
+    plo_columns = ['PLO 2', 'PLO 3', 'PLO 4', 'PLO 5']
+    subjects = df_filtered['Subjek'].unique()
+    
+    width = 0.15
+    x = range(len(subjects))
+    
+    # Now, calculate the total sum for each PLO and display them as metrics
+    plo_sums = df_filtered[plo_columns].sum()/4
+    
+    # Use Streamlit's columns to display metrics in one line
+    col1, col2, col3, col4 = st.columns(4)
+    
+    col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="PLO 2: Cognitive Skill", border=True)
+    col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="PLO 3: Digital Skill", border=True)
+    col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="PLO 4: Interpersonal Skill", border=True)
+    col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="PLO 5: Communication Skill", border=True)
+      
+    # Create the plot
+    fig_SAP = go.Figure()
+    
+    # Add each PLO as a separate trace (bar group)
+    for i, plo in enumerate(plo_columns):
+        values = df_filtered.groupby('Subjek')[plo].sum()
+        fig_SAP.add_trace(go.Bar(
+            x=[val + i * width for val in x],
+            y=values,
+            name=plo,
+            # text=values,  # Display the value on hover
+            # textposition='outside',  # Position the text outside the bar
+            hoverinfo='y',  # Show text on hover
+        ))
+    
+    # Update layout to set axis labels and chart title
+    fig_SAP.update_layout(
+        title=f"Prestasi PLO bagi Tahun {year_selectionSAP}",
+        xaxis_title="Subjek",
+        yaxis_title="Nilai",
+        xaxis=dict(
+            tickmode='array',
+            tickvals=[val + width for val in x],
+            ticktext=subjects,
+        ),
+        barmode='group',  # Display the bars in a grouped manner
+        legend=dict(x=1.05, y=1),  # Move legend outside the chart
+        margin=dict(r=100),  # Add margin for the legend
+    )
+    
+    # Display the Plotly chart using Streamlit
+    st.plotly_chart(fig_SAP, use_container_width=True, key="SAP_plot")
 
 with tab3:
     try:
