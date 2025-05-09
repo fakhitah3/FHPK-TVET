@@ -8,15 +8,6 @@ import streamlit as st
 # Set the title of the Streamlit app
 st.title("Program Apprentice 3u1i@FHPK")
 
-# Display the information about the 3 courses
-st.write(
-    """
-    Terdapat **3 kursus** utama yang terlibat dalam program ini, iaitu:
-    - **Pelancongan**
-    - **Hospitaliti**
-    - **Kesejahteraan**
-    """
-)
 
 st.title("Jumlah PLO Keseluruhan")
 # URLs of your CSV files
@@ -78,6 +69,16 @@ if all_data:
 else:
     st.error("No valid dataframes to process.")
     
+
+# Display the information about the 3 courses
+st.write(
+    """
+    Terdapat **3 kursus** utama yang terlibat dalam program ini, iaitu:
+    - **Pelancongan**
+    - **Hospitaliti**
+    - **Kesejahteraan**
+    """
+)
 
 tab1, tab2, tab3 = st.tabs(["Pelancongan", "Hospitaliti", "Kesejahteraan"])
 
