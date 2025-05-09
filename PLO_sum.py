@@ -285,4 +285,4 @@ with st.expander("Kesejahteraan"):
     )
     
     # Display the Plotly chart using Streamlit
-     st.plotly_chart(fig_SAS, use_container_width=True, key="SAS_plot")
+    st.plotly_chart(fig_SAS, use_container_width=True, key="SAS_plot")
