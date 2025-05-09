@@ -15,7 +15,7 @@ st.write(
     """
 )
 
-banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i.jpeg' 
+banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i_v2.jpeg' 
 st.image(banner_image, use_container_width =True)
 
 st.markdown(
