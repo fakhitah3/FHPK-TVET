@@ -8,6 +8,7 @@ st.image(banner_image, use_container_width =True)
 st.write(
     """
     **Program Apprentice 3u1i@FHPK** merupakan sebuah program pengajian mod industri yang dijalankan dengan pelaksanaan struktur kurikulum yang merangkumi tiga tahun pengajian akademik di UMK dan satu tahun latihan industri yang disusun secara sistematik dalam tempoh pengajian di industri terpilih. Program pengajian mod industri yang dijalankan adalah menggunakan kaedah pembelajaran berasaskan kerja (WBL) dengan menggunapakai garis panduan pelaksanaan mod pengajian 2u2i. 
+    """
 )
 
 banner_image = 'https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/main/3u1i_2.jpeg' 
