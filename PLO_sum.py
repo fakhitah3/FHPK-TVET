@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 # Set the title of the Streamlit app
-st.title("Program Apprentice 3u1i@FHPK")
+#st.title("Program Apprentice 3u1i@FHPK")
 
 
 st.title("Jumlah PLO Keseluruhan")
