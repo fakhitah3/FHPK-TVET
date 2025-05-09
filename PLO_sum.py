@@ -50,7 +50,7 @@ for i, plo in enumerate(plo_columns):
         y=values,
         name=plo,
         text=values,  # Display the value on hover
-        textposition='outside',  # Position the text outside the bar
+        #textposition='outside',  # Position the text outside the bar
         hoverinfo='text',  # Show text on hover
     ))
 
