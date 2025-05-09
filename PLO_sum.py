@@ -61,7 +61,7 @@ if all_data:
     fig = go.Figure(data=[go.Bar(
         x=plo_averages.index, 
         y=plo_averages.values, 
-        hoverinfo='%{y:.2f}',  # Show text on hover
+        hovertemplate='%{y:.2f}',  # Show text on hover
     )])
 
     # Set labels and title for the chart
