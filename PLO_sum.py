@@ -34,10 +34,10 @@ plo_sums = df_filtered[plo_columns].sum()/4
 # Use Streamlit's columns to display metrics in one line
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="Total value for PLO 2", border=True)
-col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="Total value for PLO 3", border=True)
-col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="Total value for PLO 4", border=True)
-col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="Total value for PLO 5", border=True)
+col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="PLO 2: Cognitive Skill", border=True)
+col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="PLO 3: Digital Skill", border=True)
+col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="PLO 4: Interpersonal Skill", border=True)
+col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="PLO 5: Communication Skill", border=True)
   
 # Create the plot
 fig = go.Figure()
@@ -56,7 +56,7 @@ for i, plo in enumerate(plo_columns):
 
 # Update layout to set axis labels and chart title
 fig.update_layout(
-    title=f"PLO Performance for Subjects {year_selectionSAP}",
+    title=f"Prestasi PLO bagi Tahun {year_selectionSAP}",
     xaxis_title="Subjek",
     yaxis_title="Nilai",
     xaxis=dict(
@@ -103,31 +103,47 @@ plo_sums = dx_filtered[plo_columns].sum()/4
 # Use Streamlit's columns to display metrics in one line
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="Total value for PLO 2", border=True)
-col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="Total value for PLO 3", border=True)
-col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="Total value for PLO 4", border=True)
-col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="Total value for PLO 5", border=True)
+col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="PLO 2: Cognitive Skill", border=True)
+col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="PLO 3: Digital Skill", border=True)
+col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="PLO 4: Interpersonal Skill", border=True)
+col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="PLO 5: Communication Skill", border=True)
 
 
 width = 0.15
 x = range(len(subjects))
 
 # Create the plot
-fig, ax = plt.subplots(figsize=(12, 6))
+fig = go.Figure()
 
+# Add each PLO as a separate trace (bar group)
 for i, plo in enumerate(plo_columns):
-    ax.bar([val + i * width for val in x], dx_filtered.groupby('Subjek')[plo].sum(), width, label=plo)
+    values = df_filtered.groupby('Subjek')[plo].sum()
+    fig.add_trace(go.Bar(
+        x=[val + i * width for val in x],
+        y=values,
+        name=plo,
+        # text=values,  # Display the value on hover
+        # textposition='outside',  # Position the text outside the bar
+        hoverinfo='y',  # Show text on hover
+    ))
 
-ax.set_xlabel("Subjek")
-ax.set_ylabel("Nilai")
-ax.set_title(f"PLO Performance for Subjects {year_selectionSAH}")
-ax.set_xticks([val + width for val in x])
-ax.set_xticklabels(subjects, rotation=45, ha='right')
-# Legend placed outside the chart (top right)
-ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1), borderaxespad=0)
+# Update layout to set axis labels and chart title
+fig.update_layout(
+    title=f"Prestasi PLO bagi Tahun {year_selectionSAH}",
+    xaxis_title="Subjek",
+    yaxis_title="Nilai",
+    xaxis=dict(
+        tickmode='array',
+        tickvals=[val + width for val in x],
+        ticktext=subjects,
+    ),
+    barmode='group',  # Display the bars in a grouped manner
+    legend=dict(x=1.05, y=1),  # Move legend outside the chart
+    margin=dict(r=100),  # Add margin for the legend
+)
 
-# Use Streamlit's st.pyplot to display the plot
-st.pyplot(fig)
+# Display the Plotly chart using Streamlit
+st.plotly_chart(fig)
 
 # Add a header to the Streamlit app
 st.title("Kesejahteraan")  # This creates a title at the top of the page
@@ -161,28 +177,44 @@ plo_sums = dy_filtered[plo_columns].sum()/4
 # Use Streamlit's columns to display metrics in one line
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="Total value for PLO 2", border=True)
-col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="Total value for PLO 3", border=True)
-col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="Total value for PLO 4", border=True)
-col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="Total value for PLO 5", border=True)
+col1.metric(label="PLO 2", value=f"{plo_sums['PLO 2']:.2f}", help="PLO 2: Cognitive Skill", border=True)
+col2.metric(label="PLO 3", value=f"{plo_sums['PLO 3']:.2f}", help="PLO 3: Digital Skill", border=True)
+col3.metric(label="PLO 4", value=f"{plo_sums['PLO 4']:.2f}", help="PLO 4: Interpersonal Skill", border=True)
+col4.metric(label="PLO 5", value=f"{plo_sums['PLO 5']:.2f}", help="PLO 5: Communication Skill", border=True)
   
-
+  
 width = 0.15
 x = range(len(subjects))
 
 # Create the plot
-fig, ax = plt.subplots(figsize=(12, 6))
+fig = go.Figure()
 
+# Add each PLO as a separate trace (bar group)
 for i, plo in enumerate(plo_columns):
-    ax.bar([val + i * width for val in x], dy_filtered.groupby('Subjek')[plo].sum(), width, label=plo)
+    values = df_filtered.groupby('Subjek')[plo].sum()
+    fig.add_trace(go.Bar(
+        x=[val + i * width for val in x],
+        y=values,
+        name=plo,
+        # text=values,  # Display the value on hover
+        # textposition='outside',  # Position the text outside the bar
+        hoverinfo='y',  # Show text on hover
+    ))
 
-ax.set_xlabel("Subjek")
-ax.set_ylabel("Nilai")
-ax.set_title(f"PLO Performance for Subjects {year_selectionSAS}")
-ax.set_xticks([val + width for val in x])
-ax.set_xticklabels(subjects, rotation=45, ha='right')
-# Legend placed outside the chart (top right)
-ax.legend(loc='upper left', bbox_to_anchor=(1.02, 1), borderaxespad=0)
+# Update layout to set axis labels and chart title
+fig.update_layout(
+    title=f"Prestasi PLO bagi Tahun {year_selectionSAS}",
+    xaxis_title="Subjek",
+    yaxis_title="Nilai",
+    xaxis=dict(
+        tickmode='array',
+        tickvals=[val + width for val in x],
+        ticktext=subjects,
+    ),
+    barmode='group',  # Display the bars in a grouped manner
+    legend=dict(x=1.05, y=1),  # Move legend outside the chart
+    margin=dict(r=100),  # Add margin for the legend
+)
 
-# Use Streamlit's st.pyplot to display the plot
-st.pyplot(fig)
+# Display the Plotly chart using Streamlit
+st.plotly_chart(fig)
