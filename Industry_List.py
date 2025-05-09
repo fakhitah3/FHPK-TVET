@@ -48,9 +48,9 @@ try:
         x=total_students_by_year.index,
         y=total_students_by_year.values,
         name='Total Students',
-        text=total_students_by_year.values,  # Show the number of students on hover
-        textposition='outside',
-        hoverinfo='text',  # Show text on hover
+        #text=total_students_by_year.values,  # Show the number of students on hover
+        #textposition='outside',
+        hoverinfo='y',  # Show text on hover
     ))
 
     # Set the chart title and axis labels
