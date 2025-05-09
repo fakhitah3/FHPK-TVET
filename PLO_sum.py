@@ -19,6 +19,7 @@ st.write(
 )
 
 st.title("Jumlah PLO Keseluruhan")
+
 def plot_plo_sums(df):
         """Plots the sum of values for each PLO across subjects using Plotly."""
     
@@ -44,10 +45,10 @@ def plot_plo_sums(df):
         )
     
         # Display the Plotly chart using Streamlit
-        st.plotly_chart(fig)
+st.plotly_chart(fig)
     
-    # Add a header to the Streamlit app
-    st.title("PLO Keseluruhan")
+# Add a header to the Streamlit app
+st.title("PLO Keseluruhan")
     
     
     # URLs of your CSV files
