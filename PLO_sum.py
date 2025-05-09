@@ -3,9 +3,23 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
+import streamlit as st
 
-# Add a header to the Streamlit app
-st.title("Pelancongan")  # This creates a title at the top of the page
+# Set the title of the Streamlit app
+st.title("Program Apprentice 3u1i@FHPK")
+
+# Display the information about the 3 courses
+st.write(
+    """
+    Terdapat **3 kursus** utama yang terlibat dalam program ini, iaitu:
+    - **Pelancongan**
+    - **Hospitaliti**
+    - **Kesejahteraan**
+    """
+)
+with st.expander("Click to expand and view the performance data"):
+  # Add a header to the Streamlit app
+  st.title("Pelancongan")  # This creates a title at the top of the page
 
 try:
   df = pd.read_csv('https://raw.githubusercontent.com/fakhitah3/FHPK-TVET/refs/heads/main/Data/PLO%20Analysis%20SAP.csv')
