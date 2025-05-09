@@ -82,10 +82,6 @@ st.markdown("""
 st.subheader("Tahun Pengajian:")
 st.write("3 tahun di universiti, 1 tahun di industri (3u1i)")
 
-st.subheader("Tahun Pertama Penawaran Program:")
-st.write("2021")
-
-
 tab1, tab2, tab3 = st.tabs(["Hospitaliti", "Pelancongan", "Kesejahteraan"])
 
 
