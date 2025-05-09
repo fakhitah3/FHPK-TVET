@@ -51,7 +51,7 @@ for i, plo in enumerate(plo_columns):
         name=plo,
         # text=values,  # Display the value on hover
         # textposition='outside',  # Position the text outside the bar
-        hoverinfo=x+y,  # Show text on hover
+        hoverinfo='x+y',  # Show text on hover
     ))
 
 # Update layout to set axis labels and chart title
