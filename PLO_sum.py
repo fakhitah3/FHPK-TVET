@@ -58,9 +58,9 @@ if all_data:
 
     # Set labels and title for the chart
     fig.update_layout(
-        title="Average Value for Each PLO across all subjects",
+        #title="Average Value for Each PLO across all subjects",
         xaxis_title="PLO",
-        yaxis_title="Average Value",
+        yaxis_title="Nilai",
         xaxis=dict(tickmode='array', tickvals=plo_averages.index),
         margin=dict(r=100),  # Add space for the legend
     )
